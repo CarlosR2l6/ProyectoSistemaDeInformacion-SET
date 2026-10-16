@@ -1,0 +1,47 @@
+/* 1. Aquí voy a definir los colores una vez,
+en el resto de archivo se utiliza con la forma var(--nombre)*/
+
+:root {
+    /*1.Colores de la marca (verde de la empresa)*/
+    --color-marca-oscuro: #0b4f2c; /*Barra superior y encabesado de la tabla*/
+    --color-marca: #0f7a3e; /*Verde principal: pestañas activas y titulos*/
+    --color-marca-claro: #12924a; /*Verde mas vivi: detalles y bordes de tarjetas*/
+    --color-marca-fondo: #e6f4ec; /*Verde muy suave: fondos de resaltp*/
+    --color-marca-neon: #5be37d; /*Verde brillante: del logo SET*/
+    --color-logo-magenta: #d611c9; /*Paralelogramo magenta del logo*/
+
+
+    /*2.Colores neutros (textos. bordes y fondos)*/
+    --color-fondo: #f6f8f7; /*Fondo general de toda la pagina*/
+    --color-blanco: #ffffff; /*Blanco puro: tarjetas, tablas y campos*/
+    --color-texto: #1c2b22; /*Texto principal (casi negro)*/
+    --color-texto-suave: #5b6b61; /*Texto de apoyos y ayudas*/
+    --color-borde: #d5e0d9; /*Lineas y bordes suaves*/
+    --color-borde-campo: #9fb0a5; /*Bordes de campos de formulario*/
+
+
+    /*colores de acciones (siempre los mismos)
+    Heuristica 4 (consistencia) : cada accion tiene su color fijo en todo 
+    el sistema, para que el usuario aprnda una sola vez*/
+    --color-guardar: #1f4fd8; /*Azul: guardar, buscar y aceptar*/
+    --color-agregar: #0f7a3e; /*Verde: agregar o nuevo*/
+    --color-eliminar: #c62828; /*Rojo: eliminar*/
+
+
+    /*Colores de los estados (etiquetas)
+    Heuristica 9 (reconocimiento en lugar de recordar) : los estados tienen 
+    colores distintivos para facilitar su identificación*/
+    --estado-ok-fondo: #e3f5e9;        --estado-ok-texto: #0c6b35; /*Activo y Vigente*/
+    --estado-alerta-fondo: #fff1d6;    --estado-alerta-texto: #8a5200; /*Por vencer e incapacitado*/
+    --estado-error-fondo: #fde4e4;     --estado-error-texto: #a31515; /*Error o  vencido*/
+    --estado-neutro-fondo: #e8ecea;     --estado-neutro-texto: #44524a; /*Retirado e inactivo*/
+
+
+    /*Color de las lineas laterar de las tarjetas de indicadores*/
+    --indicador-alerta: #e59a00; /*naranja*/
+    --indicador-neutro: #7b8a81; /*Gris verdoso*/
+
+
+    /*Color del resalto de la fila seleccionada*/
+    --color-fila-seleccionada: #e8f1ff;
+}

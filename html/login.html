@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar | SET</title>
+    <link rel="stylesheet" href="../css/colores.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body class="pagina-login">
+    <main class="login">
+    
+         <img src="../imagen/Logo_Trnaspote_Especiales_SET.png">
+
+
+        <h1>Bienvenido</h1>
+        
+        <p class="subtitulo">Ingresa con tu usuario para continuar</p>
+        
+        <form id="form-login" novalidate>
+            <!-- Campo: usuario -->
+            <div class="campo">
+                <label for="usuario">Usuario<span class="obligatorio">*</span></label>
+                <input type="text" id="usuario" name="usuario" placeholder="jperez" autocomplete="username" required>
+            </div>
+
+            <!--Caompo: contraseña-->
+            <div class="campo">
+
+                <label for="clave">Contraseña<span class="obligatorio">*</span></label>
+                <input type="password" id="clave" name="clave" placeholder="12345" autocomplete="current-password" required>
+            </div>
+
+            <!--Heuristica 3:Control y libertad del usuario,
+            poder ver la contraseña ayada a corregir errores al escribir-->
+            <label class="casilla"><input type="checkbox" id="ver-clave"> Mostrar contraseña</label>
+
+            <button type="submit" class="boton">Iniciar sesión</button>
+
+            <!--Heuristica 9: Ayudar a los usuarios a reconocer, diagnosticar y corregir errores,
+            mensaje claro cuando algo sale mal. Esta oculto(hidden) hasta que el ingreso falla-->
+            <p class="campo_error" id="login-error" role="alert" hidden>
+                Usuario o contraseña incorectos. Verifica e intenta de nuevo.
+            </p>
+
+            <a class=" login_enlace" href="#" onclick="alert('Comunicate con el administrador para restablecer tu contraseña.'); 
+             return false">¿Olvidaste tu contraseña?</a>
+        </form>
+    </main>
+</body>
+</html>

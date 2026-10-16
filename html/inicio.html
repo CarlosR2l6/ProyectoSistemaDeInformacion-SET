@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel principal | SET</title>
+    <link rel="stylesheet" href="../css/colores.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body data-seccion="Inicio" data-pagina="Panel principal" data-miga="Inicio | Panel principal">
+
+    <!--Barra superior y submenú:los rellena js/menu.js-->
+    <header class="barra-superior" id="barra-superior"></header>
+    <nav class="submenu" id="submenu" aria-label="submenu"></nav>
+    <div class="migas" id="migas" aria-label="Ruta de navegacion"></div>
+
+    <!--Contenido de la pagina-->
+    <main class="contenido">
+        <h1>Panel principal</h1>
+        <p class="subtitulo">Resumen del estado del personal, vehículos y documentacion. Haz clic en la targeta para ver el detalle</p>
+        
+        <!--Alerta principal-->
+        <!--Heuristica 1:Visibilidad del estado del sistema, lo mas urgente se vé primero-->
+        <div class="alerta-superior" role="alert">
+            <span class="estado estado--error" data-estado="Vencido"> ✖️ atención </span>
+            <span><strong>3 documentos vencidos</strong> y <strong> 1 por vencer </strong> requiere acción.</span>
+            <span class="herramientas_espacio"></span>
+            <a class="boton boton-contorno" href="vencimientos.html">Ver vencimientos →</a>
+        </div>
+
+        <!-- Colaboradores-->
+        <!-- Heuristica 7:Flexibilidad y eficiencia de uso, cada tarjeta es un enlace (<a>)al hacer clic sobre el abre la lista ya filtrada -->
+        <h2 class="separador"> Colaboradores | 49 en total </h2>
+        <div class="indicadores">
+            <a class="indicador" href="colaboradores.html?estado=Activo">
+                <span class="indicador_numero"> 48 </span>
+                <span class="indicador_texto"> Activos </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--alerta" href="colaboradores.html?estado=Incapacitado">
+                <span class="indicador_numero"> 2 </span>
+                <span class="indicador_texto"> Incapacitado </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--neutro" href="colaboradores.html?estado=Retirado">
+                <span class="indicador_numero"> 1 </span>
+                <span class="indicador_texto"> Retirados </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+    </main>
+</body>
+</html>

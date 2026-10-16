@@ -1,0 +1,781 @@
+/*INDICE:
+    1.Base (regas generales)
+    2.Barra superior y menú
+    3.Contenido, titulos y tarjetas
+    4.Formularios Campos
+    5.Botones
+    6.Barra de heramientas (buscador, filtros)
+    7.Tablas y etiquetas de estado
+    8.Pestañas y fichas de persona
+    9.Panel de inicio (indicadores y alertas)
+    10.Grafico de barras (vencimientos)
+    11.Avisos, dialogos de confirmacion y estados vacios
+    12.Pantalla de login
+    13.Pantallas pequeñas (celular y table)
+
+
+/*1.BASE*/
+   
+/*Hace que el ancho de las cajas incluyan bordes y relleno:
+    mas facil de calcular
+*/
+*,*::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0; /*Quita la margen por defecto del navegador*/
+    font-family: "Segoe UI", Roboto, Arial, sans-serif; /*Tipografia clara y legible*/
+    font-family: 15px;
+    line-height: 1.45;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+a {
+    color: inherit;
+}
+
+/*Anillo visible al navegar con teclado (Tab):ayuda a saber donde esta*/
+:focus-visible {
+    outline: 3px solid var(--color-guardar);
+    outline-offset: 2px;
+}
+
+/*El atributo hidden: oculta el elemento sin importar otras reglas*/
+[hidden] {
+    display: none !important;
+}
+
+
+/*2.Barra superior y menú*/
+
+.barra-superior {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 60px;
+    padding: 6px 20px;
+    background: var(--color-marca-oscuro);
+    color: var(--color-blanco);
+}
+
+/*Tamño del logo*/
+.logo img {
+    width: 200px;
+    height: auto;
+    display: block;
+}
+
+/*Menú principal: Inicio, Personal, Flota, Operacion y Catalogos*/
+.menu-principal { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    flex: 1;
+}
+.menu-principal a {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: #d6efe0;
+}
+.menu-principal a:hover {
+    background: rgba(255, 255, 255, .12);
+}
+/*Heusteria 1:Visibilidad del estado del sistema ( la seccion donde
+se ve distinta fondo blanco*/
+.menu-principal a.activo {
+    background: var(--color-blanco);
+    color: var(--color-marca-oscuro);
+}
+
+/*Menu del usuario (nombre, avatar, cerrar sesion)*/
+.usuario {
+    position: relative;
+}
+/*Lo que siempre se ve*/
+.usuario summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    list-style: none;
+}
+.usuario summary::-webkit-details-marker {
+    display: none;
+}
+.usuario_avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-carca-neon);
+    color: var(--color-marca-oscuro);
+    font-weight: 800;
+}
+/*Lo que aparece al hacer clic*/
+.usuario_menu {
+    position: absolute;
+    right: 0;
+    top: 44px;
+    z-index: 20;
+    min-width: 170px;
+    padding: 6px;
+    background: var(--color-blanco);
+    color: var(--color-texto);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+.usuario_menu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+.usuario_menu a:hover {
+    background: var(--color-marca-fondo);
+}
+
+/*Submenú (Segunda barra, blanca): paginas de la seccion actual*/
+.submenu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 24px;
+    background: var(--color-blanco);
+    border-bottom: 1px solid var(--color-borde);
+}
+.submenu a {
+    padding: 12px 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-texto-suave);
+    border-bottom: 3px solid transparent;
+}
+.submenu a.activo {
+    color: var(--color-marca);
+    border-bottom: var(--color-marca);
+}
+
+/*Migas de pan: Inicio > Personal > Colaboradores */
+.migas {
+    padding: 14px 28px 0;
+    font-size: 13px;
+    color: var(--color-texto-suave);
+}
+.migas strong { 
+    color: var(--color-texto);
+}
+
+
+/*3.Contenido, titulos y tarjetas*/
+
+.contenido {
+    padding: 8px 28px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.contenido h1 {
+    margin: 6px 0 4px;
+    font-size: 24px;
+}
+.subtitulo {
+    margin: 0 0 16px;
+    color: var(--color-texto-suave);
+}
+
+/*Tarjeta: caja blanca con borde para agrupar cosas*/
+.tarjeta {
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+}
+.tarjeta_titulo {
+    margin: 0 0 12px;
+    font-size: 16px;
+    color: var(--color-marca-oscuro);
+}
+
+/*Rejilla: reparte los campos en columnas iguales*/
+.rejilla {
+    display: grid;
+    gap: 14px 16px;
+    grid-template-columns: repeat(4, 1fr);
+}
+.rejilla--2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+.rejilla--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+.dos-columnas {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+}
+.separador {
+    margin: 18px 0 8px;
+    font-size: 16px;
+}
+
+
+/*4.Formularios Campos*/
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 13px;
+}
+ 
+/*Huristica 5:Prevención de errores, el asterisco rojo indica campo obligatirio*/
+.obligatorio {
+    color: var(--color-eliminar);
+}
+
+.campo input,
+.campo select{
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    font: inherit;
+    color: var(--color-texto);
+    background: var(--color-blanco);
+    border: 1.5px solid var(--color-borde-campo);
+    border-radius: 8px;
+}
+/*Texto de ejemplo (placeholder)*/
+.campo input::placeholder {
+    color: #8a978f;
+}
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--color-guardar);
+}
+.campo_ayuda {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: var(--color-texto-suave);
+}
+/*Heuristica 9: Ayudar a los usuarios a reconocer, diagnosticar y corregir errores,*/
+/*el error aparece junto al campo y con texto*/
+.campo_error { 
+    margin: 4px 0 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-eliminar);
+}
+.campo--error input,
+.campo--error select { 
+    border-color: var(--color-eliminar);
+}
+/*Heuristica 10:Ayuda y documentación*/
+/*Icono ? con explicacion al pasar el mause*/
+.ayuda {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: help;
+    background: #dbe6df;
+    color: var(--color-marca-oscuro);
+    border-radius: 50%;
+}
+
+.casilla {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+.casilla input {
+    width: 16px;
+    height: 16px;
+}
+
+/*5.Botones*/
+/*Heuristica 5:Consistencia y estándares, colores fijos por accion*/
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+    align-items: center;
+}
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 18px;
+    font: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+}
+.boton--guardar {
+    background: var(--color-guardar);
+    color: var(--color-blanco);
+}
+.boton--agregar { 
+    background: var(--color-agregar);
+    color: var(--color-blanco);
+}
+.boton--peligro {
+    background: var(--color-eliminar);
+    color: var(--color-blanco);
+}
+.boton--secundario {
+    background: var(--color-blanco);
+    border-color: var(--color-borde-campo);
+    color: var(--color-texto);
+}
+.boton--contorno {
+    background: var(--color-blanco);
+    border-color: var(--color-marca);
+    color: var(--color-marca);
+}
+.boton--eliminar {
+    background: var(--color-blanco);
+    border-color: var(--color-eliminar);
+    color: var(--color-eliminar);
+}
+
+/*Heuristica 5:Consistencia y estándares,*/
+/*un boton desactivado se ve apagado no se puede usar*/
+.boton:disabled {
+    background: #eef1ef;
+    border-color: #e0e6e2;
+    color: #a3aea7;
+    cursor: not-allowed;
+}
+
+
+/*6.Barra de heramientas (buscador, filtros, botones sobre la tabla)*/
+.herramientas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+/*Empuja los botones hacia la derecha*/
+.herramientas_espacio {
+    flex: 1;
+}
+.buscador {
+    flex: 1;
+    min-width: 260px;
+    max-width: 360px;
+    height: 40px;
+    padding: 0 14px;
+    font: inherit;
+    border: 1.5px solid var(--color-borde-campo);
+    border-radius: 20px;
+    background: var(--color-blanco);
+}
+.filtro{ 
+    height: 40px;
+    padding: 0 10px;
+    font: inherit;
+    border: 1.5px solid var(--color-borde-campo);
+    border-radius: 8px;
+    background: var(--color-blanco);
+}
+
+
+/*7.Tablas y etiquetas de estado*/
+/*Contenedor: si la tabla es muy ancha aparecera la barra de desplazamiento*/
+.tabla-contenedor {
+    overflow-x: auto;
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    background: var(--color-blanco);
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tabla th {
+    padding: 11px 10px;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 12.5px;
+    background: var(--color-marca-oscuro);
+    color: var(--color-blanco);
+}
+.tabla td {
+    padding: 11px 10px;
+    font-size: 14px;
+    border-top: 1px solid #e6ece8;
+}
+.tabla tbody tr {
+    cursor: pointer;
+}
+.tabla tbody tr:hover {
+    background: var(--color-marca-fondo);
+}
+/**Heusteria 1:Visibilidad del estado del sistema */
+.tabla tbody tr.seleccionada {
+    background: var(--color-fila-seleccionada);
+}
+
+/*Heuristica 7:Flexibilidad y eficiencia de uso, encabezado ordenable : mestra ⇅ y cambia a ▲ / ▼ al ordenar*/
+.tabla th.ordenable {
+    cursor: pointer;
+}
+.tabla th.ordenable::after {
+    content: ⇅;
+    opacity: .55;
+    font-size: 10px;
+}
+.tabla th[arial-sort="ascending"] ::after {
+    content: "▲";
+    opacity: 1;
+}
+.tabla th[arial-sort="descending"]::after {
+    content: "▼";
+    opacity: 1;
+}
+
+.contador {
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: var(--color-texto-suave);
+}
+
+/*Heuristica 9 :Ayudar a los usuarios a reconocer, diagnosticar y corregir errores,*/
+/*etiqueta de estado color + icono + texto*/
+.estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.estado--ok {
+    background: var(--estado-ok-fondo);
+    color: var(--estado-ok-texto);
+}
+.estado--alerta {
+    background: var(--estado-alerta-fondo);
+    color: var(--estado-alerta-texto);
+}
+.estado--error {
+    background: var(--estado-error-fondo);
+    color: var(--estado-error-texto);
+}
+.estado--neutro {
+    background: var(--estado-neutro-fondo);
+    color: var(--estado-neutro-texto);
+}
+
+/*8.Pestañas y fichas de persona*/
+.pestana {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+.pestana a {
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-suave);
+}
+.pestana a.activo {
+    background: var(--color-marca);
+    border-color: var(--color-marca);
+    color: var(--color-blanco);
+}
+
+.ficha {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+}
+.ficha_avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-marca);
+    color: var(--color-blanco);
+    font-weight: 800;
+}
+.ficha_nombre {
+    font-size: 17px;
+    font-weight: 800;
+}
+.ficha_detalle {
+    color: var(--color-texto-suave);
+}
+
+
+/*9.Panel de inicio (indicadores y alertas)*/
+.alerta-superior {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-left: 5px solid var(--color-eliminar);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+}
+
+.indicadores {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 16px;
+}
+.indicador {
+    display: block;
+    padding: 14px 16 px;
+    text-decoration: none;
+    text-align: center;
+    background: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-left: 5px solid var(--color-marca-claro);
+}
+
+/*Heuristica 7:Flexibilidad y eficiencia de uso, se nota que clicable*/
+a.indicador:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 1);
+}
+
+.indicador_numero {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+.indicador_texto {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-texto-suave);
+}
+.indicador_enlace {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    columns: var(--color-marca);
+}
+.indicador--alerta {
+    border-left-color: var(--indicador-alerta);
+}
+.indicador--alerta .indicador_enlace {
+    color: var(--color-alerta-texto);
+}
+.indicador--error {
+    border-left-color: var(--color-eliminar);
+}
+.indicador--error .indicador_enlace {
+    color: var(--color-eliminar);
+}
+.indicador--neutro {
+    border-left-color: var(--indicador-neutro);
+}
+
+
+/*10.Grafico de barras (vencimientos)*/
+.barras_grupo {
+    margin-bottom: 14px;
+    font-weight: 800;
+}
+.barras_filas {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    font-weight: 400;
+}
+.barras_nombre {
+    width: 170px;
+    font-size: 13px;
+}
+.barras_pista {
+    flex: 1;
+    height: 12px;
+    border-radius: 6px;
+    background: #e8ecea;
+    overflow: hidden;
+}
+.barras_relleno {
+    display: block;
+    height: 100%;
+}
+.barras_relleno--error {
+    background: var(--color-eliminar);
+}
+.barras_relleno--alerta {
+    background: var(--indicador-alerta);
+}
+.barras_valor {
+    width: 24px;
+    text-align: right;
+    font-weight: 700;
+}
+
+
+/*11.Avisos, dialogos de confirmacion y estados vacios */
+/*Heuristica 1: Visibilidad del estado del sistema, aviso temporal arriba a la derecha guardado corectamente */
+
+.aviso {
+    position: fixed;
+    top: 76px;
+    right: 24px;
+    z-index: 50;
+    padding: 12px 18px;
+    font-weight: 700;
+    color: var(--color-blanco);
+    background: var(--estado-ok-texto);
+    border-radius: 10px;
+    box-shadow: 0 6 px 18 px rgba(0, 0, 0, .25);
+}
+.aviso--error {
+    background: var(--color-eliminar);
+}
+
+/*Ventana de confirmacion usa etiqueta nativa <dialog> */
+.dialogo {
+    max-width: 440px;
+    padding: 20px 22px;
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .3);
+}
+
+/*Fondo oscurecido*/
+.dialogo::backdrop {
+    background: rgba(0, 0, 0, .4);
+}
+.dialogo h2 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+.dialogo p { 
+    margin: 0;
+    color: var(--color-texto-suave);
+}
+
+/*Heuristica 10: Ayuda y documentación, estado vacio dice que hacer cuando no hay datos */
+.vacio {
+    padding: 28px;
+    text-align: center;
+    color: var(--color-texto-suave);
+    border-top: 1px silid #e6ece8;
+}
+
+/*12.Pantalla de login*/
+.pagina-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--color-marca-oscuro), var(--color-marca-claro));
+}
+.login {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 32px;
+    background: var(--color-blanco);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+}
+.login_logo {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: var(--color-marca-oscuro);
+    border-radius: 10px;
+    color: var(--color-blanco);
+}
+.login img{
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+.login h1 {
+    margin: 12px 0 4px;
+    font-size: 20px;
+    text-align: center;
+}
+.login .subtitulo {
+    text-align: center;
+}
+.login form {
+    display: grid;
+    gap: 14px;
+}
+.login .boton {
+    width: 100%;
+    height: 44px;
+    background: var(--color-marca);
+    color: var(--color-blanco);
+}
+.login_enlace {
+    color: var(--color-guardar);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+/*13.Pantallas pequeñas (celular y table)*/
+@media (max-width: 1000px) {
+    .rejilla, .rejilla--3{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .indicadores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dos-columnas { grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .rejilla,.rejilla--2, .rejilla--3, .indicadores {
+        grid-template-columns: 1fr;
+    }
+    .contenido{
+        padding: 8px 16px 40;
+    }
+    .migas {
+        padding: 12px 16px 0;
+    }
+    .barra-superior {
+        flex-wrap: wrap;
+    }
+}
