@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clientes | SET</title>
+  <link rel="stylesheet" href="../css/colores.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body data-seccion="Catálogos" data-pagina="Clientes" data-migas="Inicio|Catálogos|Clientes">
+
+  <!--Barra superior y submenú: los rellena js/menu.js-->
+  <header class="barra-superior" id="barra-superior"></header>
+  <nav class="submenu" id="submenu" aria-label="Submenú"></nav>
+  <div class="migas" id="migas" aria-label="Ruta de navegación"></div>
+
+  <!--Contenido de la pagina-->
+  <main class="contenido">
+    <h1>Clientes</h1>
+    <p class="subtitulo">Catálogo de apoyo: sus datos aparecen en las listas desplegables de todo el sistema.</p>
+
+    <!--Formulario-->
+    <!--novalidate: la validación la hace js/app.js, para mostrar los errores junto a cada campo.
+    data-mensaje-ok: texto del aviso al guardar-->
+    <form id="formulario" class="formulario" novalidate data-mensaje-ok="Guardado correctamente">
+    <section class="tarjeta">
+      <h2 class="tarjeta__titulo">Nuevo registro</h2>
+      <div class="rejilla rejilla--3">
+
+        <!--Campo: Nombre o razón social-->
+        <div class="campo">
+          <label for="nombre">Nombre o razón social <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Cliente S.A." required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Cédula o NIT-->
+        <div class="campo">
+          <label for="documento">Cédula o NIT <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="text" id="documento" name="documento" placeholder="Ej: 900.123.456-7" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Teléfono-->
+        <div class="campo">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej: 601 234 5678">
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Correo-->
+        <div class="campo">
+          <label for="correo">Correo</label>
+          <input type="email" id="correo" name="correo" placeholder="contacto@empresa.com">
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Dirección-->
+        <div class="campo">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" name="direccion" placeholder="Calle / Carrera…">
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Estado-->
+        <div class="campo">
+          <label for="estado">Estado <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <select id="estado" name="estado" required><option value="">Seleccionar…</option><option value="Activo">Activo</option><option value="Inactivo">Inactivo</option></select>
+          <p class="campo__error" hidden></p>
+        </div>
+      </div>
+
+      <!--Boton-->
+      <!-- Guardar = azul, Cancelar = gris (colores fijos por acción) -->
+      <div class="botones">
+        <button type="submit" class="boton boton--guardar">Guardar</button>
+        <button type="reset" class="boton boton--secundario">Cancelar</button>
+      </div>
+    </section>
+    </form>
+
+    <!--Barra de herramientas-->
+    <!--data-tabla: id de la tabla que controla. Editar y Eliminar empiezan desactivados
+    (disabled) y js/app.js los activa al seleccionar una fila-->
+    <div class="herramientas" data-tabla="tabla-clientes">
+      <input type="search" class="buscador" placeholder="Buscar…" aria-label="Buscar en la tabla">
+      <select class="filtro" aria-label="Filtrar por estado">
+        <option value="">Todos los estados</option><option value="Activo">Activo</option><option value="Inactivo">Inactivo</option>
+      </select>
+      <span class="herramientas__espacio"></span>
+      <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
+      <button type="button" class="boton boton--contorno" data-accion="editar" disabled>✎ Editar</button>
+      <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
+      <a class="boton boton--agregar" href="#formulario">＋ Agregar</a>
+    </div>
+
+    <!--Tabla-->
+    <!--Cada fila (tr) lleva data-id (número en la base de datos) y data-nombre
+    (el nombre que se muestra al pedir confirmación de eliminar)-->
+    <div class="tabla-contenedor">
+      <table class="tabla" id="tabla-clientes" data-nombre-archivo="clientes">
+        <thead>
+          <tr>
+            <th class="ordenable" data-campo="nombre">Nombre</th>
+            <th class="ordenable" data-campo="documento">Cédula o NIT</th>
+            <th class="ordenable" data-campo="telefono">Teléfono</th>
+            <th class="ordenable" data-campo="correo">Correo</th>
+            <th class="ordenable" data-campo="direccion">Dirección</th>
+            <th class="ordenable" data-campo="estado">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-id="1" data-nombre="Cliente S.A."><td>Cliente S.A.</td><td>900.123.456-7</td><td>601 234 5678</td><td>contacto@cliente.com</td><td>Cl 100 # 10-20</td><td data-valor="Activo"><span class="estado estado--ok" data-estado="Activo">● Activo</span></td></tr>
+        </tbody>
+      </table>
+
+      <!--Heuristica 10: estado vacío, se muestra solo si no hay filas visibles-->
+      <div class="vacio" data-vacio="tabla-clientes" hidden>Aún no hay registros. Agrega el primero con el formulario de arriba.</div>
+    </div>
+    <p class="contador" data-contador="tabla-clientes"></p>
+  </main>
+
+  <script src="js/menu.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

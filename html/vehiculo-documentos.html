@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentación del vehículo | SET</title>
+  <link rel="stylesheet" href="../css/colores.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body data-seccion="Flota" data-pagina="Vehículos" data-migas="Inicio|Flota|Vehículos|WOZ-214|Documentos">
+
+  <!--Barra superior y submenú: los rellena js/menu.js-->
+  <header class="barra-superior" id="barra-superior"></header>
+  <nav class="submenu" id="submenu" aria-label="Submenú"></nav>
+  <div class="migas" id="migas" aria-label="Ruta de navegación"></div>
+
+  <!--Contenido de la pagina-->
+  <main class="contenido">
+    <h1>Documentación del vehículo</h1>
+    <p class="subtitulo">SOAT, tecnomecánica, tarjeta de operación y demás documentos del vehículo.</p>
+
+    <!--Ficha del vehiculo-->
+    <section class="tarjeta ficha">
+      <div class="ficha__nombre">Documentos del vehículo WOZ-214 · N.º 435</div>
+      <span class="herramientas__espacio"></span>
+      <a class="boton boton--secundario" href="vehiculos.html">← Volver a vehículos</a>
+    </section>
+
+    <!--Formulario-->
+    <!--novalidate: la validación la hace js/app.js, para mostrar los errores junto a cada campo.
+    data-mensaje-ok: texto del aviso al guardar-->
+    <form id="formulario" class="formulario" novalidate data-mensaje-ok="Guardado correctamente">
+    <section class="tarjeta">
+      <h2 class="tarjeta__titulo">Nuevo documento</h2>
+      <div class="rejilla rejilla--3">
+
+        <!--Campo: Tipo de documento-->
+        <div class="campo">
+          <label for="tipo">Tipo de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <select id="tipo" name="tipo" required><option value="">Seleccionar…</option><option value="SOAT">SOAT</option><option value="Tecnomecánica">Tecnomecánica</option><option value="Tarjeta de operación">Tarjeta de operación</option><option value="Póliza">Póliza</option><option value="Tarjeta de propiedad">Tarjeta de propiedad</option></select>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Número de documento-->
+        <div class="campo">
+          <label for="numero">Número de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="text" id="numero" name="numero" placeholder="Ej: 8891023" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Fecha de emisión-->
+        <div class="campo">
+          <label for="emision">Fecha de emisión <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="date" id="emision" name="emision" placeholder="" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Fecha de vencimiento-->
+        <div class="campo">
+          <label for="vencimiento">Fecha de vencimiento <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="date" id="vencimiento" name="vencimiento" placeholder="" data-despues-de="emision" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Observaciones-->
+        <div class="campo">
+          <label for="observaciones">Observaciones</label>
+          <input type="text" id="observaciones" name="observaciones" placeholder="Opcional">
+          <p class="campo__error" hidden></p>
+        </div>
+      </div>
+
+      <!--Boton-->
+      <!--Guardar = azul, Cancelar = gris (colores fijos por acción)-->
+      <div class="botones">
+        <button type="submit" class="boton boton--guardar">Guardar</button>
+        <button type="reset" class="boton boton--secundario">Cancelar</button>
+      </div>
+    </section>
+    </form>
+
+    <!--Barra de herramienta-->
+    <!--data-tabla: id de la tabla que controla. Editar y Eliminar empiezan desactivados
+    (disabled) y js/app.js los activa al seleccionar una fila-->
+    <div class="herramientas" data-tabla="tabla-doc-vehiculo">
+      <input type="search" class="buscador" placeholder="Buscar documento…" aria-label="Buscar en la tabla">
+      <select class="filtro" aria-label="Filtrar por estado">
+        <option value="">Todos los estados</option><option value="Vigente">Vigente</option><option value="Por vencer">Por vencer</option><option value="Vencido">Vencido</option>
+      </select>
+      <span class="herramientas__espacio"></span>
+      <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
+      <button type="button" class="boton boton--contorno" data-accion="editar" disabled>✎ Editar</button>
+      <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
+      <a class="boton boton--agregar" href="#formulario">＋ Agregar</a>
+    </div>
+
+    <!--Tabla-->
+    <!--Cada fila (tr) lleva data-id (número en la base de datos) y data-nombre
+    (el nombre que se muestra al pedir confirmación de eliminar)-->
+    <div class="tabla-contenedor">
+      <table class="tabla" id="tabla-doc-vehiculo" data-nombre-archivo="documentos_vehiculo">
+        <thead>
+          <tr>
+            <th class="ordenable" data-campo="tipo">Tipo de documento</th>
+            <th class="ordenable" data-campo="numero">Número</th>
+            <th class="ordenable" data-campo="emision">Emisión</th>
+            <th class="ordenable" data-campo="vencimiento">Vencimiento</th>
+            <th class="ordenable" data-campo="observaciones">Observaciones</th>
+            <th class="ordenable">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-id="1" data-nombre="SOAT 8891023"><td>SOAT</td><td>8891023</td><td data-valor="2026-06-01">01/06/2026</td><td data-valor="2027-06-01">01/06/2027</td><td>—</td><td><span class="estado estado--ok" data-estado="Vigente">✔ Vigente</span></td></tr>
+          <tr data-id="2" data-nombre="Tecnomecánica TM-5521"><td>Tecnomecánica</td><td>TM-5521</td><td data-valor="2025-10-12">12/10/2025</td><td data-valor="2026-10-12">12/10/2026</td><td>Renovar</td><td><span class="estado estado--error" data-estado="Vencido">✖ Vencido</span></td></tr>
+          <tr data-id="3" data-nombre="Tarjeta de operación TO-3310"><td>Tarjeta de operación</td><td>TO-3310</td><td data-valor="2025-11-30">30/11/2025</td><td data-valor="2026-11-30">30/11/2026</td><td>—</td><td><span class="estado estado--alerta" data-estado="Por vencer">⚠ Vence en 15 días</span></td></tr>
+        </tbody>
+      </table>
+      <!--Heuristica 10: estado vacío, se muestra solo si no hay filas visibles-->
+      <div class="vacio" data-vacio="tabla-doc-vehiculo" hidden>Aún no hay documentos. Agrega el primero con el formulario de arriba.</div>
+    </div>
+    <p class="contador" data-contador="tabla-doc-vehiculo"></p>
+  </main>
+
+  <script src="js/menu.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrar vehículo | SET</title>
+  <link rel="stylesheet" href="../css/colores.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body data-seccion="Flota" data-pagina="Registrar vehículo" data-migas="Inicio|Flota|Registrar vehículo">
+
+  <!--Barra superior y submenú: los rellena js/menu.js-->
+  <header class="barra-superior" id="barra-superior"></header>
+  <nav class="submenu" id="submenu" aria-label="Submenú"></nav>
+  <div class="migas" id="migas" aria-label="Ruta de navegación"></div>
+
+  <!--Contenido de la pagina-->
+  <main class="contenido">
+    <h1>Registrar vehículo</h1>
+    <p class="subtitulo">Los campos con <span class="obligatorio">*</span> son obligatorios.</p>
+
+    <!--Formulario-->
+    <!--novalidate: la validación la hace js/app.js, para mostrar los errores junto a cada campo.
+    data-mensaje-ok: texto del aviso al guardar-->
+    <form id="formulario" class="formulario" novalidate data-mensaje-ok="Vehículo guardado correctamente">
+    <section class="tarjeta">
+      <h2 class="tarjeta__titulo">Identificación</h2>
+      <div class="rejilla">
+
+        <!--Campo: Placa-->
+        <div class="campo">
+          <label for="placa">Placa <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="text" id="placa" name="placa" placeholder="Ej: WOZ-214" pattern="[A-Za-z]{3}-?[0-9]{3}" data-mensaje-formato="Formato de placa: 3 letras y 3 números (Ej: WOZ-214)." maxlength="7" required>
+          <p class="campo__ayuda">3 letras, guion y 3 números.</p>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Número interno-->
+        <div class="campo">
+          <label for="interno">Número interno <span class="obligatorio" title="Campo obligatorio">*</span><span class="ayuda" tabindex="0" title="Número con el que la empresa identifica internamente al vehículo." aria-label="Número con el que la empresa identifica internamente al vehículo.">?</span></label>
+          <input type="text" id="interno" name="interno" placeholder="Ej: 435" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Marca-->
+        <div class="campo">
+          <label for="marca">Marca <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <select id="marca" name="marca" required><option value="">Seleccionar…</option><option value="Chevrolet">Chevrolet</option><option value="Hyundai">Hyundai</option><option value="Renault">Renault</option><option value="Toyota">Toyota</option><option value="Mercedes-Benz">Mercedes-Benz</option></select>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Modelo (año)-->
+        <div class="campo">
+          <label for="modelo">Modelo (año) <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="number" id="modelo" name="modelo" placeholder="Ej: 2022" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Color-->
+        <div class="campo">
+          <label for="color">Color</label>
+          <select id="color" name="color"><option value="">Seleccionar…</option><option value="Blanco">Blanco</option><option value="Gris">Gris</option><option value="Azul">Azul</option><option value="Negro">Negro</option></select>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Tipo de vehículo-->
+        <div class="campo">
+          <label for="tipo">Tipo de vehículo <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <select id="tipo" name="tipo" required><option value="">Seleccionar…</option><option value="Automóvil">Automóvil</option><option value="Camioneta">Camioneta</option><option value="Microbús">Microbús</option><option value="Buseta">Buseta</option><option value="Bus">Bus</option></select>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Capacidad (pasajeros)-->
+        <div class="campo">
+          <label for="capacidad">Capacidad (pasajeros) <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="number" id="capacidad" name="capacidad" placeholder="Ej: 19" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Propietario-->
+        <div class="campo">
+          <label for="propietario">Propietario <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="search" id="propietario" name="propietario" list="lista-propietario" placeholder="Escribe para buscar…" autocomplete="off" required>
+          <datalist id="lista-propietario"><option value="Juan Pérez · C.C. 79.111.222"><option value="Transportes Andes S.A.S. · NIT 900.222.111"></datalist>
+          <p class="campo__error" hidden></p>
+        </div>
+      </div>
+
+    </section>
+    <section class="tarjeta">
+      <h2 class="tarjeta__titulo">Estado</h2>
+      <div class="rejilla">
+
+        <!--Campo: Estado-->
+        <div class="campo">
+          <label for="estado">Estado <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <select id="estado" name="estado" required><option value="">Seleccionar…</option><option value="Activo">Activo</option><option value="Mantenimiento">Mantenimiento</option><option value="Inactivo">Inactivo</option><option value="Retirado">Retirado</option></select>
+          <p class="campo__ayuda">Activo, Mantenimiento, Inactivo o Retirado.</p>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Observaciones-->
+        <div class="campo">
+          <label for="observaciones">Observaciones</label>
+          <input type="text" id="observaciones" name="observaciones" placeholder="Opcional">
+          <p class="campo__error" hidden></p>
+        </div>
+      </div>
+
+      <!--Boton-->
+      <!--Guardar = azul, Cancelar = gris (colores fijos por acción)-->
+      <div class="botones">
+        <button type="submit" class="boton boton--guardar">Guardar vehículo</button>
+        <button type="reset" class="boton boton--secundario">Cancelar</button>
+      </div>
+    </section>
+    </form>
+  </main>
+
+  <script src="js/menu.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

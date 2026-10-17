@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rutas | SET</title>
+  <link rel="stylesheet" href="../css/colores.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body data-seccion="Operación" data-pagina="Rutas" data-migas="Inicio|Operación|Rutas">
+
+  <!-- Barra superior y submenú: los rellena js/menu.js -->
+  <header class="barra-superior" id="barra-superior"></header>
+  <nav class="submenu" id="submenu" aria-label="Submenú"></nav>
+  <div class="migas" id="migas" aria-label="Ruta de navegación"></div>
+
+  <!--Contenido de la pagina-->
+  <main class="contenido">
+    <h1>Rutas</h1>
+    <p class="subtitulo">Define el recorrido y quién lo cumple. Escribe en un campo de búsqueda y elige una opción de la lista (no hay que memorizar placas ni cédulas).</p>
+
+    <!--Formulario-->
+    <!--novalidate: la validación la hace js/app.js, para mostrar los errores junto a cada campo.
+    data-mensaje-ok: texto del aviso al guardar-->
+    <form id="formulario" class="formulario" novalidate data-mensaje-ok="Ruta guardada correctamente">
+    <section class="tarjeta">
+      <h2 class="tarjeta__titulo">Nueva ruta</h2>
+      <div class="rejilla">
+
+        <!--Campo: Nombre de la ruta-->
+        <div class="campo">
+          <label for="nombre">Nombre de la ruta <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Ruta Norte 1" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Descripción-->
+        <div class="campo">
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" name="descripcion" placeholder="Opcional">
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Origen-->
+        <div class="campo">
+          <label for="origen">Origen <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="text" id="origen" name="origen" placeholder="Ej: Bogotá" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Destino-->
+        <div class="campo">
+          <label for="destino">Destino <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="text" id="destino" name="destino" placeholder="Ej: Chía" required>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Asignación-->
+        <div class="campo">
+          <label for="asignacion">Asignación <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="search" id="asignacion" name="asignacion" list="lista-asignacion" placeholder="Escribe para buscar…" autocomplete="off" required>
+          <datalist id="lista-asignacion"><option value="CT-2026-001 · WOZ-214 · Pepito Pérez"></datalist>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Cliente-->
+        <div class="campo">
+          <label for="cliente">Cliente <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="search" id="cliente" name="cliente" list="lista-cliente" placeholder="Escribe para buscar…" autocomplete="off" required>
+          <datalist id="lista-cliente"><option value="Cliente S.A."><option value="Industrias Andes"><option value="Colegio San José"></datalist>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Conductor-->
+        <div class="campo">
+          <label for="conductor">Conductor <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="search" id="conductor" name="conductor" list="lista-conductor" placeholder="Escribe para buscar…" autocomplete="off" required>
+          <datalist id="lista-conductor"><option value="Pepito Pérez (C.C. 1.234.567.890)"><option value="Carlos Rojas (C.C. 80.456.123)"><option value="Luis Mora (C.C. 79.321.654)"></datalist>
+          <p class="campo__ayuda">Solo aparecen conductores con licencia y exámenes vigentes.</p>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Vehículo-->
+        <div class="campo">
+          <label for="vehiculo">Vehículo <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <input type="search" id="vehiculo" name="vehiculo" list="lista-vehiculo" placeholder="Escribe para buscar…" autocomplete="off" required>
+          <datalist id="lista-vehiculo"><option value="WOZ-214 · N.º 435"><option value="TQP-551 · N.º 207"></datalist>
+          <p class="campo__ayuda">Solo aparecen vehículos con SOAT y tecnomecánica vigentes.</p>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Encargado-->
+        <div class="campo">
+          <label for="encargado">Encargado</label>
+          <input type="search" id="encargado" name="encargado" list="lista-encargado" placeholder="Escribe para buscar…" autocomplete="off">
+          <datalist id="lista-encargado"><option value="A. Salazar"><option value="M. Gómez"></datalist>
+          <p class="campo__error" hidden></p>
+        </div>
+
+        <!--Campo: Estado-->
+        <div class="campo">
+          <label for="estado">Estado <span class="obligatorio" title="Campo obligatorio">*</span></label>
+          <select id="estado" name="estado" required><option value="">Seleccionar…</option><option value="Activa">Activa</option><option value="Suspendida">Suspendida</option><option value="Finalizada">Finalizada</option></select>
+          <p class="campo__error" hidden></p>
+        </div>
+      </div>
+
+      <!--Botones-->
+      <!--Guardar = azul, Cancelar = gris (colores fijos por acción)-->
+      <div class="botones">
+        <button type="submit" class="boton boton--guardar">Guardar ruta</button>
+        <button type="reset" class="boton boton--secundario">Cancelar</button>
+      </div>
+    </section>
+    </form>
+
+    <!--Barra de herramientas-->
+    <!--data-tabla: id de la tabla que controla. Editar y Eliminar empiezan desactivados
+    (disabled) y js/app.js los activa al seleccionar una fila-->
+    <div class="herramientas" data-tabla="tabla-rutas">
+      <input type="search" class="buscador" placeholder="Buscar ruta…" aria-label="Buscar en la tabla">
+      <span class="herramientas__espacio"></span>
+      <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
+      <button type="button" class="boton boton--contorno" data-accion="editar" disabled>✎ Editar</button>
+      <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
+      <a class="boton boton--agregar" href="#formulario">＋ Agregar</a>
+    </div>
+
+    <!--Tabla-->
+    <!--Cada fila (tr) lleva data-id (número en la base de datos) y data-nombre
+    (el nombre que se muestra al pedir confirmación de eliminar)-->
+    <div class="tabla-contenedor">
+      <table class="tabla" id="tabla-rutas" data-nombre-archivo="rutas">
+        <thead>
+          <tr>
+            <th class="ordenable">N.º</th>
+            <th class="ordenable" data-campo="nombre">Ruta</th>
+            <th class="ordenable" data-campo="descripcion">Descripción</th>
+            <th class="ordenable" data-campo="origen">Origen</th>
+            <th class="ordenable" data-campo="destino">Destino</th>
+            <th class="ordenable" data-campo="cliente">Cliente</th>
+            <th class="ordenable" data-campo="conductor">Conductor</th>
+            <th class="ordenable" data-campo="vehiculo">Vehículo</th>
+            <th class="ordenable" data-campo="encargado">Encargado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-id="1" data-nombre="Ruta Norte 1"><td>1</td><td>Ruta Norte 1</td><td>Empleados turno AM</td><td>Bogotá</td><td>Chía</td><td>Cliente S.A.</td><td>Pepito Pérez</td><td>WOZ-214</td><td>A. Salazar</td></tr>
+        </tbody>
+      </table>
+
+      <!--Estado vacío (Heurística 10): se muestra solo si no hay filas visibles-->
+      <div class="vacio" data-vacio="tabla-rutas" hidden>Aún no hay rutas. Agrega la primera con el formulario de arriba.</div>
+    </div>
+    <p class="contador" data-contador="tabla-rutas"></p>
+  </main>
+
+  <script src="js/menu.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar colaborador | SET</title>
+    <link rel="stylesheet" href="../css/colores.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body data-seccion="Personal" data-pagina="Registrar colaborador" data-migas="Inicio | Personal | Registrar colaborador">
+
+    <!--Barra superior y submenú: los rellena js/menu.js-->
+    <header class="barra-superior" id="barra-superior"></header>
+    <nav class="submenu" id="submenu" aria-label="submenu"></nav>
+    <div class="migas" id="migas" aria-label="Ruta de navegacion"></div>
+
+    <!--contenido de la pagina-->
+    <main class="contenido">
+        <h1> Registrar colaborador </h1>
+        <p class="subtitulo">los campos con <span class="obligatorio">*</span> son obligatorios.</p>
+
+        <!--Formulario-->
+        <!--novalidate: la validacion la hace js/app.js, para mostrar los errores junto a cada campo.
+        data-mensaje-ok: texto del aviso al guardar -->
+
+        <form id="formulario" class="formulario" novalidate data-mensaje-ok="Colaborador guardado correctamente">
+            
+            <!--Información laboral-->
+            <section class="tarjeta">
+                <h2 class="tarjeta_titulo">Datos personale</h2>
+                <div class="rejilla">
+
+                    <!--Campo: Nombres-->
+                    <div class="campo">
+                        <label for="nombres">Nombres <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="text" id="nombres" name="nombres" placeholder="Ej: Pepito Pancracio" required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Apellido-->
+                    <div class="campo">
+                        <label for="apellidos">Apellidos <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="text" id="apellidos" name="apellidos" placeholder="Ej: Perez Perenceno" required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Número de documento-->
+                    <div class="campo">
+                        <label for="documento">Documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="text" id="documento" name="documento" placeholder="Solo numeros Ej: 123456789" pattern="[0-9.]{5,15}" data-mensaje-formato="Escribe solo numeros (entre 5 y 15 digitos)." required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Fecha de nacimiento-->
+                    <div class="campo">
+                        <label for="fechaNacimiento">Fecha de nacimiento <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="date" id="nacimiento" name="nacimiento" placeholder="" required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Género-->
+                    <div class="campo">
+                        <label for="genero">Género <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <select id="genero" name="genero"  required><option value="">Seleccionar...</option><option value="Masculino">Masculino</option><option value="Femenino">Femenino </option><option value="Otro">Otro</option></select>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Dirección-->
+                    <div class="campo">
+                        <label for="direccion">Dirección <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle 1 # 1-1" required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Teléfono-->
+                    <div class="campo">
+                        <label for="telefono">Teléfono <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej: 300 123 4567" required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Correo electrónico-->
+                    <div class="campo">
+                        <label for="correo">Correo electrónico <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="email" id="correo" name="correo" placeholder="Pepito_perez@gmail.com" required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!--Información laboral-->
+            <section class="tarjeta">
+                <h2 class="tarjeta_titulo">Informacion laborar</h2>
+                <div class="rejilla">
+
+                    <!--Campo: Fecha de ingreso-->
+                    <div class="campo">
+                        <label for="ingreso">Fecha de ingreso <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <input type="date" id="ingreso" name="ingreso" placeholder="" required>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Cargo-->
+                    <div class="campo">
+                        <label for="cargo">Cargo <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <select id="cargo" name="cargo" required><option value="">Seleccionar..</option><option value="Conductor">Conductor</option><option value="Coordinador">Coodinador</option><option value="Auxiliar administrativo">Auxiliar administrativo</option></select>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Estado-->
+                    <div class="campo">
+                        <label for="estado">Estado <span class="obligatorio" title="Campo obligatorio">*</span><span class="ayuda" tabindex="0" title="Activo: trabaja normalmente. Incapacitado: con incapacidad médica. Retirado: ya no trbaja con nosotros. Vacaciones: se encuetra disfrutando de su periodo de vacaciones. Suspendido: tiene una suspencion temporal" aria-label="Activo: trabaja normalmente. Incapacitado: con incapacidad médica. Retirado: ya no trbaja con nosotros. Vacaciones: se encuetra disfrutando de su periodo de vacaciones. Suspendido: tiene una suspencion temporal">?</span></label>
+                        <select id="estado" name="estado" required><option value="">Seleccionar...</option><option value="Activo">Activo</option><option value="Incapacitado">Incapacitado</option><option value="Retitado">Retirado</option><option value="Vacaciones">Vacaciones</option><option value="Suspendido">Suspendido</option></select>
+                        <p class="campo_error" hidden></p>
+                    </div>
+
+                    <!--Campo: Observaciones-->
+                    <div class="campo">
+                        <label for="observaciones">Observaciones </label>
+                        <input type="text" id="observaciones" name="observaciones" placeholder=" Opcional ">
+                        <p class="campo_error" hidden></p>
+                    </div>
+                </div>
+            </section>
+
+            <!--Información de afiliaciones-->
+            <section class="tarjeta">
+                <h2 class="tarejeta_tutulo">Afiliaciones</h2>
+                <div class="rejilla">
+                 
+                    <!--Campo: EPS-->
+                    <div class="campo">
+                        <label for="eps">EPS <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <select id="eps" name="eps" required><option value="">Seleccionar...</option><option value="Sura">Sura</option><option value="Sanitas">Sanitas</option><option value="Nueva EPS">Nueva EPS</option><option value="Compensar">Compensar</option><option value="S.O.S">S.O.S</option></select>
+                        <p class="campo_error" hidden></p>
+                    </div> 
+                    
+                    <!--Campo: ARL-->
+                    <div class="campo">
+                        <label for="arl">ARL <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <select id="arl" name="arl" required><option value="">Seleccionar...</option><option value="Sura">Sura</option><option value="Positiva">Positiva</option><option value="Colmena">Colmena</option><option value="Bolivar">Bolivar</option></select>
+                        <p class="campo_error" hidden></p>
+                    </div> 
+
+                    <!--Campo: Pensión-->
+                    <div class="campo">
+                        <label for="pension">Pensión <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <select id="pension" name="pension" required><option value="">Seleccionar...</option><option value="Porvenir">Porvenir</option><option value="Proteccion">Protección</option><option value="Colpensiones">Colpensiones</option><option value="Colfondos">Colfondos</option><option value="Skandia">Skandia</option></select>
+                        <p class="campo_error" hidden></p>
+                    </div> 
+
+                    <!--Campo: Caja de compensación-->
+                    <div class="campo">
+                        <label for="caja">Caja de compensación <span class="obligatorio" title="Campo obligatorio">*</span></label>
+                        <select id="caja" name="caja" required><option value="">Seleccionar...</option><option value="Comfenalco">Comfenalco</option><option value="Comfandi">Comfandi</option><option value="Cafam">Cafam</option><option value="Compensar">Compensar</option><option value="Colsubsidio">Colsubsidio</option></select>
+                        <p class="campo_error" hidden></p>
+                    </div> 
+                </div>
+
+                <!-- Botones-->
+                <!--Guardar=azul, Cancelar=gris (colores fijos por accion)-->
+                <div class="botones">
+                    <button type="submit" class="boton boton--guardar">Guardar colaborador</button>
+                    <button type="reset"  class="boton boton--secundario">Cancelar</button>
+                </div> 
+            </section>
+        </form>
+    </main>
+
+    <script src="js/menu.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>

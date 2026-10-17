@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vencimiento de documentación | SET</title>
+  <link rel="stylesheet" href="../css/colores.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body data-seccion="Flota" data-pagina="Vencimientos" data-migas="Inicio|Flota|Vencimientos">
+
+  <!--Barra superior y submenú: los rellena js/menu.js-->
+  <header class="barra-superior" id="barra-superior"></header>
+  <nav class="submenu" id="submenu" aria-label="Submenú"></nav>
+  <div class="migas" id="migas" aria-label="Ruta de navegación"></div>
+
+  <!--Contenido de la pagina-->
+  <main class="contenido">
+    <h1>Vencimiento de documentación</h1>
+    <p class="subtitulo">Documentos de vehículos ordenados por urgencia. Haz clic en un encabezado para ordenar.</p>
+
+    <!--Indicadores-->
+    <div class="indicadores">
+  <div class="indicador indicador--error">
+    <span class="indicador_numero">3</span>
+    <span class="indicador_texto">Vencidos</span>
+    <span class="indicador_enlace">Requieren acción hoy</span>
+  </div>
+
+  <div class="indicador indicador--alerta">
+    <span class="indicador_numero">1</span>
+    <span class="indicador_texto">Por vencer (próximos 30 días)</span>
+  </div>
+
+  <div class="indicador">
+    <span class="indicador_numero">47</span>
+    <span class="indicador_texto">Al día</span>
+  </div>
+
+  <div class="indicador indicador--neutro">
+    <span class="indicador_numero">4</span>
+    <span class="indicador_texto">Tipos de documento</span>
+  </div>
+    </div>
+
+    <!--Grafico de barras-->
+    <!--Heurística 6: cada barratiene su etiqueta y su número, sin tener que emparejar colores con una leyenda.
+    El ancho de cada barra se calcula en style="width:..%" (de ejemplo aquí)-->
+    <section class="tarjeta">
+      <h2 class="tarjeta_titulo">Resumen por tipo de documento</h2>
+      <div class="barras_grupo" style="color:var(--color-eliminar)">Vencidos
+            <div class="barras_fila">
+              <span class="barras_nombre">SOAT</span>
+              <span class="barras_pista"><span class="barras_relleno barras_relleno--error" style="width:0%"></span></span>
+              <span class="barras_valor">0</span>
+            </div>
+
+            <div class="barras_fila">
+               <span class="barras_nombre">Tecnomecánica</span>
+               <span class="barras_pista"><span class="barras_relleno barras_relleno--error" style="width:40%"></span></span>
+               <span class="barras_valor">1</span>
+            </div>
+
+            <div class="barras_fila">
+              <span class="barras_nombre">Tarjeta de operación</span>
+              <span class="barras_pista"><span class="barras_relleno barras_relleno--error" style="width:40%"></span></span>
+              <span class="barras_valor">1</span>
+            </div>
+
+            <div class="barras__fila">
+               <span class="barras_nombre">Póliza</span>
+               <span class="barras_pista"><span class="barras_relleno barras_relleno--error" style="width:40%"></span></span>
+               <span class="barras_valor">1</span>
+            </div>
+        </div>
+
+      <div class="barras_grupo" style="color:var(--estado-alerta-texto)">Por vencer
+        <div class="barras_fila">
+          <span class="barras_nombre">SOAT</span>
+          <span class="barras_pista"><span class="barras_relleno barras_relleno--alerta" style="width:0%"></span></span>
+          <span class="barras_valor">0</span>
+        </div>
+
+        <div class="barras_fila">
+          <span class="barras_nombre">Tecnomecánica</span>
+          <span class="barras_pista"><span class="barras_relleno barras_relleno--alerta" style="width:0%"></span></span>
+          <span class="barras_valor">0</span>
+        </div>
+
+        <div class="barras_fila">
+          <span class="barras_nombre">Tarjeta de operación</span>
+          <span class="barras_pista"><span class="barras_relleno barras_relleno--alerta" style="width:40%"></span></span>
+          <span class="barras_valor">1</span>
+        </div>
+
+        <div class="barras_fila">
+          <span class="barras_nombre">Póliza</span>
+          <span class="barras_pista"><span class="barras_relleno barras_relleno--alerta" style="width:0%"></span></span>
+          <span class="barras_valor">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!--Barra de herramienta-->
+    <!--data-tabla: id de la tabla que controla. Editar y Eliminar empiezan desactivados
+    (disabled) y js/app.js los activa al seleccionar una fila-->
+    <div class="herramientas" data-tabla="tabla-vencimientos">
+      <input type="search" class="buscador" placeholder="Buscar por placa " aria-label="Buscar en la tabla">
+      <select class="filtro" aria-label="Filtrar por estado">
+        <option value="">Todos los estados</option><option value="Vencido">Vencido</option><option value="Por vencer">Por vencer</option><option value="Vigente">Vigente</option>
+      </select>
+      <span class="herramientas__espacio"></span>
+      <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
+      <button type="button" class="boton boton--contorno" data-accion="editar" disabled>✎ Editar</button>
+      <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
+      <a class="boton boton--agregar" href="vehiculo-documentos.html">＋ Agregar</a>
+    </div>
+
+    <!--Tabla-->
+    <!--Cada fila (tr) lleva data-id (número en la base de datos) y data-nombre
+    (el nombre que se muestra al pedir confirmación de eliminar)-->
+    <div class="tabla-contenedor">
+      <table class="tabla" id="tabla-vencimientos" data-nombre-archivo="vencimientos">
+        <thead>
+          <tr>
+            <th class="ordenable">Vehículo</th>
+            <th class="ordenable">Documento</th>
+            <th class="ordenable">Vencimiento</th>
+            <th class="ordenable">Estado</th>
+            <th data-exportar="no">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-id="1" data-nombre="Póliza de SXT-908"><td>SXT-908</td><td>Póliza</td><td data-valor="2026-10-02">02/10/2026</td><td><span class="estado estado--error" data-estado="Vencido">✖ Vencido</span></td><td><a href="vehiculo-documentos.html">Renovar</a></td></tr>
+          <tr data-id="2" data-nombre="Póliza de SXT-908 (2)"><td>SXT-908</td><td>Tarjeta de operación</td><td data-valor="2026-10-05">05/10/2026</td><td><span class="estado estado--error" data-estado="Vencido">✖ Vencido</span></td><td><a href="vehiculo-documentos.html">Renovar</a></td></tr>
+          <tr data-id="3" data-nombre="Tecnomecánica de WOZ-214"><td>WOZ-214</td><td>Tecnomecánica</td><td data-valor="2026-10-12">12/10/2026</td><td><span class="estado estado--error" data-estado="Vencido">✖ Vencido</span></td><td><a href="vehiculo-documentos.html">Renovar</a></td></tr>
+          <tr data-id="4" data-nombre="Tarjeta de operación de TQP-551"><td>TQP-551</td><td>Tarjeta de operación</td><td data-valor="2026-10-30">30/10/2026</td><td><span class="estado estado--alerta" data-estado="Por vencer">⚠ Vence en 15 días</span></td><td><a href="vehiculo-documentos.html">Ver</a></td></tr>
+          <tr data-id="5" data-nombre="SOAT de WOZ-214"><td>WOZ-214</td><td>SOAT</td><td data-valor="2027-06-01">01/06/2027</td><td><span class="estado estado--ok" data-estado="Vigente">✔ Vigente</span></td><td><a href="vehiculo-documentos.html">Ver</a></td></tr>
+        </tbody>
+      </table>
+
+      <!--Heurística 10: Estado vacío, se muestra solo si no hay filas visibles-->
+      <div class="vacio" data-vacio="tabla-vencimientos" hidden>No hay documentos con ese filtro.</div>
+    </div>
+    <p class="contador" data-contador="tabla-vencimientos"></p>
+  </main>
+
+  
+  <script src="js/menu.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

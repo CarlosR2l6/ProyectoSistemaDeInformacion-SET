@@ -47,6 +47,84 @@
                 <span class="indicador_texto"> Retirados </span>
                 <span class="indicador_enlace"> Ver lista →</span>
             </a>
+            <a class="indicador indicador--neutro" href="colaboradores.html?estado=Vacaciones">
+                <span class="indicador_numero"> 0 </span>
+                <span class="indicador_texto"> Vacaciones </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--neutro" href="colaboradores.html?estado=Suspendido">
+                <span class="indicador_numero"> 0 </span>
+                <span class="indicador_texto"> Suspendidos </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+        </div>
+        
+        <!--Vehiculos-->
+        <h2 class="separador"> Vehículos | 50 en total </h2>
+        <div class="indicadores">
+            <a class="indicador" href="Vehiculos.html?estado=Activo">
+                <span class="indicador_numero"> 47 </span>
+                <span class="indicador_texto"> Activos </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--alerta" href="vehiculos.html?estado=Mantenimiento">
+                <span class="indicador_numero"> 1 </span>
+                <span class="indicador_texto"> En mantenimiento </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--neutro" href="vehiculos.html?estado=Retirado">
+                <span class="indicador_numero"> 2 </span>
+                <span class="indicador_texto"> Retirados </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--neutro" href="vehiculos.html?estado=Inactivo">
+                <span class="indicador_numero"> 1 </span>
+                <span class="indicador_texto"> Inactivos </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+        </div>
+
+        <!--Documentacion-->
+        <h2 class="separador"> Documentación </h2>
+        <div class="indicadores">
+            <a class="indicador" href="vencimientos.html?estado=vigente">
+                <span class="indicador_numero"> 47 </span>
+                <span class="indicador_texto"> Documentos al dia </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--error" href="vencimientos.html?estados=Vencido">
+                <span class="indicador_numero"> 3 </span>
+                <span class="indicador_texto"> Documentos vencidos </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+            <a class="indicador indicador--alerta" href="vencimientos.html?estados=Por vencer">
+                <span class="indicador_numero"> 1 </span>
+                <span class="indicador_texto"> Por vencer </span>
+                <span class="indicador_enlace"> Ver lista →</span>
+            </a>
+        </div>
+
+        <!--Buscadores rapidos-->
+        <div class="dos-columnas">
+            <section class="tarjeta">
+                <h2 class="tarjeta_titulo"> Buscar colaborador </h2>
+                <!-- method="get": al buscar, la lista recibe el texto en la direción-->
+                <form class="herramientas" action="colaboradores.html" method="get" style="margin: 0;">
+                    <input type="search" class="buscador" name="q" style="max-width: none;" placeholder="Cédula (Ej: 123456789)" aria-label="Buscar colaborador">
+                    <button class="boton boton--guardar" type="submit"> Buscar </button>
+                </form>
+            </section>
+            <section class="tarjeta">
+                <h2 class="tarjeta_titulo"> Buscar vehículo </h2>
+                <form class="herramientas" action="vehiculos.html" method="get" style="margin: 0;">
+                    <input type="search" class="buscador" name="q" style="max-width: none;" placeholder="Placa (Ej: WOZ-214)" aria-label="Buscar vehiculo">
+                    <button class="boton boton--guardar" type="submit"> Buscar </button>
+                </form>
+            </section>
+        </div>
     </main>
+
+    <script src="js/menu.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 </html>

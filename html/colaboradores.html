@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboradores | SET</title>
+    <link rel="stylesheet" href="../css/colores.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+<body data-seccion="Personal" dat-pagina="Colaboradores" data-migas="Inicio | Personal | Colaboradores">
+
+<!--Barra superior y submenú: los rellena js/menu.js-->
+    <header class="barra-superior" id="barra-superior"></header>
+    <nav class="submenu" id="submenu" aria-label="submenu"></nav>
+    <div class="migas" id="migas" aria-label="Ruta de navegacion"></div>   
+
+    <!--contenido de la pagina-->
+    <main class="contenido">
+        <h1> Colaboradores </h1>
+        <p class="subtitulo">Consulta, filtra y gestiona el personal. Selecciona una fila para activar  <strong>Editar</strong> y <strong>Eliminar</strong>.</p>
+
+        <!--Barra de herramientas-->
+        <!--data-tabla: id de la tabla que controla. Editar y Elininar empiezan desactivados
+        (disapled) y js/app.js los activa al selecionar una fila-->
+        <div class="herramientas" data-tabla="tabla-colaboradores">
+            <input type="search" class="buscador" placeholder="Buscar por nombre o cedula" arial-label="Buscar en la tabla">
+            <select class="filtro" aria-label="filtrar por estado">
+                <option value="">Todos los estados</option><option value="Activo">Activo</option><option value="Incapacitado">Incapacitado</option><option value="Retirado">Retirado</option><option value="Vacaciones">Vacaciones</option><option value="Suspendido">suspendido</option>
+            </select>
+            <span class="herramientas_espacio"></span>
+            <button type="button" class="boton boton-secundario" data-accion="exportar">⬇ Exportar a Excel</button>
+            <button type="button" class="boton boton-contorno" data-accion="editar" data-destino="colaboradores-registro.html" disabled>✎ Editar</button>
+            <button type="button" class="boton boton-eliminar" data-accion="eliminar" data-nota="También se eliminarán sus licencias, exámenes y documentos. Si solo dejó de trabajar, cambia su estado a <<Retirado>> " disabled>🗑 Eliminar</button>
+            <a class="boton boton--agregar" href="colaboradores-registro.html">＋ Agregar</a>    
+        </div>
+
+        <!--Tabla-->
+        <!--Cada fila (tr) lleva data-id (número en la base de datos) y data-nombre
+        (el nombre que muestra al pedir confirmación de eliminar)-->
+        <div class=" tabla-contenedor">
+            <table class="tabla" id="tabla-colaboradores" data-nombre-archivo="colaboradores">
+                <thead>
+                    <tr>
+                        <th class="ordenable">N.°</th>
+                        <th class="ordenable" data-campo="nombres">Nombres</th>
+                        <th class="ordenable" data-campo="apellidos">Apellidos</th>
+                        <th class="ordenable" data-campo="documento">Documento</th>
+                        <th class="ordenable" data-campo="fechaNacimiento">Fecha de nacimiento</th>
+                        <th class="ordenable" data-campo="genero">Género</th>
+                        <th class="ordenable" data-campo="direccion">Direción</th>
+                        <th class="ordenable" data-campo="telefono">Teléfono</th>
+                        <th class="ordenable" data-campo="correo">Correo electrónico</th>
+                        <th class="ordenable" data-campo="cargo">Cargo</th>
+                        <th class="ordenable" data-campo="estado">Estado</th>
+                        <th data-exportar="no">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-id="1" data-nombre="Pepito Pancracio Perez Perenceno"><td>1</td><td>Pepito Pancracio</td><td>Perez Prenceno</td><td>1.234.567.890</td><td> 01/06/1990 </td><td> Masculino </td><td>Calle 5b #8-17</td><td>300 123 4567</td><td>pepito@correo.com</td><td>Conductor</td><td data-valor="Activo"><span class="estado estado--ok" data-estado="Activo">✔️ Activo</span></td><td><a href="colaborador-licencias.html">Ver detalle </a></td></tr>
+                    <tr data-id="2" data-nombre="Maria Fernanda Gomez Ruiz"><td>2</td><td>Maria Fernanda</td><td>Gomez Ruiz</td><td>52.987.654</td><td> 11/02/1970 </td><td> Femenino </td><td>Carrera 8 #8a-110</td><td>311 555 0182</td><td>mgomez@correo.com</td><td>Coordinador</td><td data-valor="Incapacitado"><span class="estado estado--alerta" data-estado="Incapacitado">⚠️ Incapacitado</span></td><td><a href="colaborador-licencias.html">Ver detalle </a></td></tr>
+                    <tr data-id="3" data-nombre="Carlos Andres Rojas Diaz"><td>3</td><td>Carlos Andres</td><td>Rojas Diaz</td><td>80.456.123</td><td> 27/04/1997 </td><td> Masculino </td><td>Avenida 123c #115-80</td><td>320 411 788</td><td>crojas@correo.com</td><td>Conductor</td><td data-valor="Activo"><span class="estado estado--ok" data-estado="Actico">✔️ Activo</span></td><td><a href="colaborador-licencias.html">Ver detalle </a></td></tr>
+                    <tr data-id="4" data-nombre="Luis Alberto Mora Vega"><td>4</td><td>Luis Alberto</td><td>Mora Vega</td><td>79.321.654</td><td> 19/07/2000 </td><td> Masculino </td><td>Transversal 12 #15-30</td><td>315 220 9911</td><td>lmora@correo.com</td><td>Conductor</td><td data-valor="Retirado"><span class="estado estado--neutro" data-estado="Retirado">— Retirado</span></td><td><a href="colaborador-licencias.html">Ver detalle </a></td></tr>
+                    <tr data-id="5" data-nombre="Leydi Milena Terranova Soto"><td>5</td><td>Leydi Milena</td><td>Terranova Soto</td><td>69.351.694</td><td> 25/10/1993 </td><td> Femenino </td><td>Calle 21 #12-01</td><td>318 990 9988</td><td>lsoto@correo.com</td><td>auxiliar administrativo</td><td data-valor="vacaciones"><span class="estado estado--alerta" data-estado="Vacaciones">🏝️ Vacaciones</span></td><td><a href="colaborador-licencias.html">Ver detalle </a></td></tr>
+                </tbody>
+            </table>
+
+            <!--Estado vacio-->
+            <!--Heuristica 10: se muestra solo si no hay fila visible-->
+            <div class="vacio" data-vacio="tabla-colaboradores" hidden>No hay colaboradores que coincidan con la búsqueda.</div>
+        </div>
+        <p class="contador" data-contador="tabla-colaboradores"></p>
+    </main>
+
+    <script src="js/menu.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>

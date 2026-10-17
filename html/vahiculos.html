@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vehículos | SET</title>
+  <link rel="stylesheet" href="../css/colores.css">
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body data-seccion="Flota" data-pagina="Vehículos" data-migas="Inicio|Flota|Vehículos">
+
+  <!--Barra superior y submenú: los rellena js/menu.js-->
+  <header class="barra-superior" id="barra-superior"></header>
+  <nav class="submenu" id="submenu" aria-label="Submenú"></nav>
+  <div class="migas" id="migas" aria-label="Ruta de navegación"></div>
+
+  <!--Contenido de la pagina-->
+  <main class="contenido">
+    <h1>Vehículos</h1>
+    <p class="subtitulo">vehículos registrada y estado de su documentación.</p>
+
+     <!--Barra de herramientas-->
+    <!--data-tabla: id de la tabla que controla. Editar y Eliminar empiezan desactivados
+    (disabled) y js/app.js los activa al seleccionar una fila-->
+    <div class="herramientas" data-tabla="tabla-vehiculos">
+      <input type="search" class="buscador" placeholder="Buscar por placa o número interno…" aria-label="Buscar en la tabla">
+      <select class="filtro" aria-label="Filtrar por estado">
+        <option value="">Todos los estados</option><option value="Activo">Activo</option><option value="Mantenimiento">Mantenimiento</option><option value="Inactivo">Inactivo</option><option value="Retirado">Retirado</option>
+      </select>
+      <span class="herramientas__espacio"></span>
+      <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
+      <button type="button" class="boton boton--contorno" data-accion="editar" data-destino="vehiculos-registro.html" disabled>✎ Editar</button>
+      <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
+      <a class="boton boton--agregar" href="vehiculos-registro.html">＋ Agregar</a>
+    </div>
+
+    <!--Tabla-->
+    <!--Cada fila (tr) lleva data-id (número en la base de datos) y data-nombre
+    (el nombre que se muestra al pedir confirmación de eliminar)-->
+    <div class="tabla-contenedor">
+      <table class="tabla" id="tabla-vehiculos" data-nombre-archivo="vehiculos">
+        <thead>
+          <tr>
+            <th class="ordenable">N.º</th>
+            <th class="ordenable" data-campo="placa">Placa</th>
+            <th class="ordenable" data-campo="interno">N.º interno</th>
+            <th class="ordenable" data-campo="marca">Marca</th>
+            <th class="ordenable" data-campo="color">Color</th>
+            <th class="ordenable" data-campo="tipo">Tipo</th>
+            <th class="ordenable" data-campo="capacidad">Capacidad</th>
+            <th class="ordenable">Documentación</th>
+            <th class="ordenable" data-campo="estado">Estado</th>
+            <th data-exportar="no">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-id="1" data-nombre="vehículo WOZ-214"><td>1</td><td>WOZ-214</td><td>435</td><td>Chevrolet</td><td>Blanco</td><td>Microbús</td><td>19</td><td><span class="estado estado--ok" data-estado="Al día">✔ Al día</span></td><td data-valor="Activo"><span class="estado estado--ok" data-estado="Activo">● Activo</span></td><td><a href="vehiculo-documentos.html">Documentos</a></td></tr>
+          <tr data-id="2" data-nombre="vehículo SXT-908"><td>2</td><td>SXT-908</td><td>112</td><td>Hyundai</td><td>Blanco</td><td>Buseta</td><td>28</td><td><span class="estado estado--error" data-estado="Vencido">✖ Vencido</span></td><td data-valor="Activo"><span class="estado estado--ok" data-estado="Activo">● Activo</span></td><td><a href="vehiculo-documentos.html">Documentos</a></td></tr>
+          <tr data-id="3" data-nombre="vehículo TQP-551"><td>3</td><td>TQP-551</td><td>207</td><td>Renault</td><td>Gris</td><td>Camioneta</td><td>7</td><td><span class="estado estado--alerta" data-estado="Por vencer">⚠ Por vencer</span></td><td data-valor="Mantenimiento"><span class="estado estado--alerta" data-estado="Mantenimiento">🔧 Mantenimiento</span></td><td><a href="vehiculo-documentos.html">Documentos</a></td></tr>
+        </tbody>
+      </table>
+
+      <!--Heurística 10: Estado vacío, se muestra solo si no hay filas visibles -->
+      <div class="vacio" data-vacio="tabla-vehiculos" hidden>No hay vehículos que coincidan con la búsqueda.</div>
+    </div>
+    <p class="contador" data-contador="tabla-vehiculos"></p>
+  </main>
+
+  <script src="js/menu.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
