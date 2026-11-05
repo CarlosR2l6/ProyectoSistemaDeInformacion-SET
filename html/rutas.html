@@ -25,35 +25,35 @@
     data-mensaje-ok: texto del aviso al guardar-->
     <form id="formulario" class="formulario" novalidate data-mensaje-ok="Ruta guardada correctamente">
     <section class="tarjeta">
-      <h2 class="tarjeta__titulo">Nueva ruta</h2>
+      <h2 class="tarjeta_titulo">Nueva ruta</h2>
       <div class="rejilla">
 
         <!--Campo: Nombre de la ruta-->
         <div class="campo">
           <label for="nombre">Nombre de la ruta <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej: Ruta Norte 1" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Descripción-->
         <div class="campo">
           <label for="descripcion">Descripción</label>
           <input type="text" id="descripcion" name="descripcion" placeholder="Opcional">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Origen-->
         <div class="campo">
           <label for="origen">Origen <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="origen" name="origen" placeholder="Ej: Bogotá" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Destino-->
         <div class="campo">
           <label for="destino">Destino <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="destino" name="destino" placeholder="Ej: Chía" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Asignación-->
@@ -61,7 +61,7 @@
           <label for="asignacion">Asignación <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="search" id="asignacion" name="asignacion" list="lista-asignacion" placeholder="Escribe para buscar…" autocomplete="off" required>
           <datalist id="lista-asignacion"><option value="CT-2026-001 · WOZ-214 · Pepito Pérez"></datalist>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Cliente-->
@@ -69,7 +69,7 @@
           <label for="cliente">Cliente <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="search" id="cliente" name="cliente" list="lista-cliente" placeholder="Escribe para buscar…" autocomplete="off" required>
           <datalist id="lista-cliente"><option value="Cliente S.A."><option value="Industrias Andes"><option value="Colegio San José"></datalist>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Conductor-->
@@ -77,8 +77,8 @@
           <label for="conductor">Conductor <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="search" id="conductor" name="conductor" list="lista-conductor" placeholder="Escribe para buscar…" autocomplete="off" required>
           <datalist id="lista-conductor"><option value="Pepito Pérez (C.C. 1.234.567.890)"><option value="Carlos Rojas (C.C. 80.456.123)"><option value="Luis Mora (C.C. 79.321.654)"></datalist>
-          <p class="campo__ayuda">Solo aparecen conductores con licencia y exámenes vigentes.</p>
-          <p class="campo__error" hidden></p>
+          <p class="campo_ayuda">Solo aparecen conductores con licencia y exámenes vigentes.</p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Vehículo-->
@@ -86,8 +86,8 @@
           <label for="vehiculo">Vehículo <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="search" id="vehiculo" name="vehiculo" list="lista-vehiculo" placeholder="Escribe para buscar…" autocomplete="off" required>
           <datalist id="lista-vehiculo"><option value="WOZ-214 · N.º 435"><option value="TQP-551 · N.º 207"></datalist>
-          <p class="campo__ayuda">Solo aparecen vehículos con SOAT y tecnomecánica vigentes.</p>
-          <p class="campo__error" hidden></p>
+          <p class="campo_ayuda">Solo aparecen vehículos con SOAT y tecnomecánica vigentes.</p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Encargado-->
@@ -95,14 +95,14 @@
           <label for="encargado">Encargado</label>
           <input type="search" id="encargado" name="encargado" list="lista-encargado" placeholder="Escribe para buscar…" autocomplete="off">
           <datalist id="lista-encargado"><option value="A. Salazar"><option value="M. Gómez"></datalist>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Estado-->
         <div class="campo">
           <label for="estado">Estado <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="estado" name="estado" required><option value="">Seleccionar…</option><option value="Activa">Activa</option><option value="Suspendida">Suspendida</option><option value="Finalizada">Finalizada</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
       </div>
 
@@ -156,7 +156,7 @@
     <p class="contador" data-contador="tabla-rutas"></p>
   </main>
 
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

@@ -25,56 +25,56 @@
     data-mensaje-ok: texto del aviso al guardar-->
     <form id="formulario" class="formulario" novalidate data-mensaje-ok="Guardado correctamente">
     <section class="tarjeta">
-      <h2 class="tarjeta__titulo">Nuevo registro</h2>
+      <h2 class="tarjeta_titulo">Nuevo registro</h2>
       <div class="rejilla rejilla--3">
 
         <!--Campo: Tipo de persona-->
         <div class="campo">
           <label for="persona">Tipo de persona <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="persona" name="persona" required><option value="">Seleccionar…</option><option value="Natural">Natural</option><option value="Jurídica">Jurídica</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Nombre o razón social-->
         <div class="campo">
           <label for="nombre">Nombre o razón social <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Tipo de documento-->
         <div class="campo">
           <label for="tipodoc">Tipo de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="tipodoc" name="tipodoc" required><option value="">Seleccionar…</option><option value="C.C.">C.C.</option><option value="NIT">NIT</option><option value="C.E.">C.E.</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Número de documento-->
         <div class="campo">
           <label for="documento">Número de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="documento" name="documento" placeholder="Solo números" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Teléfono-->
         <div class="campo">
           <label for="telefono">Teléfono</label>
           <input type="tel" id="telefono" name="telefono" placeholder="Ej: 300 123 4567">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Correo-->
         <div class="campo">
           <label for="correo">Correo</label>
           <input type="email" id="correo" name="correo" placeholder="nombre@correo.com">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Observaciones-->
         <div class="campo">
           <label for="observaciones">Observaciones</label>
           <input type="text" id="observaciones" name="observaciones" placeholder="Opcional">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
       </div>
       
@@ -92,7 +92,7 @@
     (disabled) y js/app.js los activa al seleccionar una fila-->
     <div class="herramientas" data-tabla="tabla-propietarios">
       <input type="search" class="buscador" placeholder="Buscar…" aria-label="Buscar en la tabla">
-      <span class="herramientas__espacio"></span>
+      <span class="herramientas_espacio"></span>
       <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
       <button type="button" class="boton boton--contorno" data-accion="editar" disabled>✎ Editar</button>
       <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
@@ -126,7 +126,7 @@
     <p class="contador" data-contador="tabla-propietarios"></p>
   </main>
 
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

@@ -25,22 +25,22 @@
     data-mensaje-ok: texto del aviso al guardar-->
     <form id="formulario" class="formulario" novalidate data-mensaje-ok="Asignación guardada correctamente">
     <section class="tarjeta">
-      <h2 class="tarjeta__titulo">Nueva asignación</h2>
+      <h2 class="tarjeta_titulo">Nueva asignación</h2>
       <div class="rejilla rejilla--3">
 
         <!--Campo: Contrato-->
         <div class="campo">
           <label for="contrato">Contrato <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="contrato" name="contrato" required><option value="">Seleccionar…</option><option value="CT-2026-001">CT-2026-001</option><option value="CT-2026-002">CT-2026-002</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Vehículo-->
         <div class="campo">
           <label for="vehiculo">Vehículo <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="vehiculo" name="vehiculo" required><option value="">Seleccionar…</option><option value="WOZ-214 · N.º 435">WOZ-214 · N.º 435</option><option value="SXT-908" disabled>SXT-908 · documentos vencidos (no disponible)</option><option value="TQP-551 · N.º 207">TQP-551 · N.º 207</option></select>
-          <p class="campo__ayuda">Los vehículos con documentos vencidos aparecen desactivados y no se pueden elegir.</p>
-          <p class="campo__error" hidden></p>
+          <p class="campo_ayuda">Los vehículos con documentos vencidos aparecen desactivados y no se pueden elegir.</p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Colaborador-->
@@ -48,35 +48,35 @@
           <label for="colaborador">Colaborador <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="search" id="colaborador" name="colaborador" list="lista-colaborador" placeholder="Escribe para buscar…" autocomplete="off" required>
           <datalist id="lista-colaborador"><option value="Pepito Pérez (C.C. 1.234.567.890)"><option value="Carlos Rojas (C.C. 80.456.123)"><option value="Luis Mora (C.C. 79.321.654)"></datalist>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha de inicio-->
         <div class="campo">
           <label for="inicio">Fecha de inicio <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="date" id="inicio" name="inicio" placeholder="" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha de fin-->
         <div class="campo">
           <label for="fin">Fecha de fin</label>
           <input type="date" id="fin" name="fin" placeholder="" data-despues-de="inicio">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Estado-->
         <div class="campo">
           <label for="estado">Estado <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="estado" name="estado" required><option value="">Seleccionar…</option><option value="Activo">Activo</option><option value="Inactivo">Inactivo</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Observaciones-->
         <div class="campo">
           <label for="observaciones">Observaciones</label>
           <input type="text" id="observaciones" name="observaciones" placeholder="Opcional">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
       </div>
       
@@ -97,7 +97,7 @@
       <select class="filtro" aria-label="Filtrar por estado">
         <option value="">Todos los estados</option><option value="Activo">Activo</option><option value="Inactivo">Inactivo</option>
       </select>
-      <span class="herramientas__espacio"></span>
+      <span class="herramientas_espacio"></span>
       <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
       <button type="button" class="boton boton--contorno" data-accion="editar" disabled>✎ Editar</button>
       <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
@@ -132,7 +132,7 @@
   </main>
 
 
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

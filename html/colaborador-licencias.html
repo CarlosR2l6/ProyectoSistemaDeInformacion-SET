@@ -8,22 +8,20 @@
   <link rel="stylesheet" href="../css/colores.css">
   <link rel="stylesheet" href="../css/estilos.css">
 </head>
-</head>
-
 <body data-seccion="Personal" data-pagina="Colaboradores" data-migas="Inicio|Personal|Colaboradores|Pepito Pérez|Licencia de conducción">
-
+  
   <!--Barra superior y submenú: los rellena js/menu.js-->
   <header class="barra-superior" id="barra-superior"></header>
   <nav class="submenu" id="submenu" aria-label="Submenú"></nav>
-  <div class="migas" id="migas" aria-label="Ruta de navegación"></div>
+  <nav class="migas" id="migas" aria-label="Ruta de navegación"></nav>
 
   <!--Contenido de la pagina-->
   <main class="contenido">
     <h1>Licencia de conducción</h1>
     <p class="subtitulo">Registra y consulta las licencias del colaborador. La fecha de vencimiento debe ser posterior a la de emisión.</p>
-
+    
     <!--Ficha de la pagina-->
-    <!--Heurística 1:  Resumen fijo arriba, para no perder de vista de quién son los datos-->
+    <!--Heurística 1: Resumen fijo arriba, para no perder de vista de quién son los datos-->
     <section class="tarjeta ficha">
       <span class="ficha__avatar">PP</span>
       <div>
@@ -37,11 +35,12 @@
 
     <!--Pestaña-->
     <nav class="pestanas" aria-label="Secciones del colaborador">
-      <a href="colaboradores-registro.html">Datosr</a>
+      <a href="colaboradores-registro.html">Datos</a>
       <a href="colaborador-licencias.html" class="activo" aria-current="page">Licencia de conducción</a>
       <a href="colaborador-examenes.html">Exámenes médicos</a>
       <a href="colaborador-documentos.html">Documentos</a>
     </nav>
+
 
     <!--Formulario-->
     <!--novalidate: la validación la hace js/app.js, para mostrar los errores junto a cada campo.
@@ -64,18 +63,18 @@
           <select id="categoria" name="categoria" required><option value="">Seleccionar…</option><option value="B1">B1</option><option value="B2">B2</option><option value="C1">C1</option><option value="C2">C2</option><option value="C3">C3</option></select>
           <p class="campo__error" hidden></p>
         </div>
-
+        
         <!--Campo: Fecha de emisión-->
         <div class="campo">
           <label for="emision">Fecha de emisión <span class="obligatorio" title="Campo obligatorio">*</span></label>
-          <input type="date" id="emision" name="emision" placeholder="" required>
+          <input type="date" id="emision" name="emision" data-max="hoy" required>
           <p class="campo__error" hidden></p>
         </div>
 
         <!--Campo: Fecha de vencimiento-->
         <div class="campo">
           <label for="vencimiento">Fecha de vencimiento <span class="obligatorio" title="Campo obligatorio">*</span></label>
-          <input type="date" id="vencimiento" name="vencimiento" placeholder="" data-despues-de="emision" required>
+          <input type="date" id="vencimiento" name="vencimiento" data-despues-de="emision" required>
           <p class="campo__error" hidden></p>
         </div>
 
@@ -87,6 +86,7 @@
         </div>
       </div>
 
+
       <!--Botones-->
       <!--Guardar = azul, Cancelar = gris (colores fijos por acción)-->
       <div class="botones">
@@ -95,6 +95,7 @@
       </div>
     </section>
     </form>
+
 
     <!--Barra de herramientas-->
     <!--data-tabla: id de la tabla que controla. Editar y Eliminar empiezan desactivados
@@ -108,11 +109,12 @@
       <a class="boton boton--agregar" href="#formulario">＋ Agregar</a>
     </div>
 
+    
     <!--Tabla-->
     <!-- Cada fila (tr) lleva data-id (número en la base de datos) y data-nombre
     (el nombre que se muestra al pedir confirmación de eliminar)-->
     <div class="tabla-contenedor">
-      <table class="tabla" id="tabla-licencias" data-nombre-archivo="licencias">
+      <table class="tabla" id="tabla-licencias" data-estado-auto data-nombre-archivo="licencias">
         <thead>
           <tr>
             <th class="ordenable" data-campo="numero">Número</th>
@@ -128,13 +130,12 @@
           <tr data-id="2" data-nombre="Licencia C2 n.º 1234567890"><td>1234567890</td><td>C2</td><td data-valor="2025-01-15">15/01/2025</td><td data-valor="2028-01-15">15/01/2028</td><td>—</td><td><span class="estado estado--ok" data-estado="Vigente">✔ Vigente</span></td></tr>
         </tbody>
       </table>
-      <!--Heuristica 10: estado vacío, se muestra solo si no hay filas visibles-->
+      <!--Heurística 10: estado vacío, se muestra solo si no hay filas visibles-->
       <div class="vacio" data-vacio="tabla-licencias" hidden>Aún no hay licencias. Agrega la primera con el formulario de arriba.</div>
     </div>
     <p class="contador" data-contador="tabla-licencias"></p>
   </main>
-
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

@@ -9,43 +9,37 @@
 </head>
 <body class="pagina-login">
     <main class="login">
-    
-         <img src="../imagen/Logo_Trnaspote_Especiales_SET.png">
-
-
+         <img src="../imagen/Logo_Trnaspote_Especiales_SET.png" alt="Transportes Especiales SET S.A.S.">
         <h1>Bienvenido</h1>
-        
         <p class="subtitulo">Ingresa con tu usuario para continuar</p>
-        
-        <form id="form-login" novalidate>
+        <form id="form-login" method="post" novalidate>
+
             <!-- Campo: usuario -->
             <div class="campo">
                 <label for="usuario">Usuario<span class="obligatorio">*</span></label>
                 <input type="text" id="usuario" name="usuario" placeholder="jperez" autocomplete="username" required>
             </div>
 
-            <!--Caompo: contraseña-->
+            <!--Campo: contraseña-->
             <div class="campo">
-
                 <label for="clave">Contraseña<span class="obligatorio">*</span></label>
-                <input type="password" id="clave" name="clave" placeholder="12345" autocomplete="current-password" required>
+                <input type="password" id="clave" name="clave" autocomplete="current-password" required>
             </div>
 
-            <!--Heuristica 3:Control y libertad del usuario,
-            poder ver la contraseña ayada a corregir errores al escribir-->
-            <label class="casilla"><input type="checkbox" id="ver-clave"> Mostrar contraseña</label>
 
+            <!--Heurística 3:Control y libertad del usuario,
+            poder ver la contraseña ayuda a corregir errores al escribir-->
+            <label class="casilla"><input type="checkbox" id="ver-clave" aria-controls="clave"> Mostrar contraseña</label>
             <button type="submit" class="boton">Iniciar sesión</button>
-
-            <!--Heuristica 9: Ayudar a los usuarios a reconocer, diagnosticar y corregir errores,
+            
+            <!--Heurística 9: Ayudar a los usuarios a reconocer, diagnosticar y corregir errores,
             mensaje claro cuando algo sale mal. Esta oculto(hidden) hasta que el ingreso falla-->
-            <p class="campo_error" id="login-error" role="alert" hidden>
-                Usuario o contraseña incorectos. Verifica e intenta de nuevo.
+            <p class="campo__error" id="login-error" role="alert" hidden>
+                Usuario o contraseña incorrectos. Verifica e intenta de nuevo.
             </p>
-
-            <a class=" login_enlace" href="#" onclick="alert('Comunicate con el administrador para restablecer tu contraseña.'); 
-             return false">¿Olvidaste tu contraseña?</a>
+            <button type="button" class="login__enlace" data-accion="recuperar">¿Olvidaste tu contraseña?</button>
         </form>
     </main>
+    <script src="../js/app.js"></script>
 </body>
 </html>

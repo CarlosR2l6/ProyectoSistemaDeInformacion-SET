@@ -23,12 +23,12 @@
     <!--Ficha de la persona-->
     <!--Heurística 1: Resumen fijo arriba, para no perder de vista de quién son los datos-->
     <section class="tarjeta ficha">
-      <span class="ficha__avatar">PP</span>
+      <span class="ficha_avatar">PP</span>
       <div>
-        <div class="ficha__nombre">Pepito Pancracio Pérez Perenceno</div>
-        <div class="ficha__detalle">Conductor · C.C. 1.234.567.890 · <span class="estado estado--ok" data-estado="Activo">● Activo</span></div>
+        <div class="ficha_nombre">Pepito Pancracio Pérez Perenceno</div>
+        <div class="ficha_detalle">Conductor · C.C. 1.234.567.890 · <span class="estado estado--ok" data-estado="Activo">● Activo</span></div>
       </div>
-      <span class="herramientas__espacio"></span>
+      <span class="herramientas_espacio"></span>
 
       <!--Heurística 3: siempre hay un camino de regreso-->
       <a class="boton boton--secundario" href="colaboradores.html">← Volver a colaboradores</a>
@@ -42,53 +42,53 @@
       <a href="colaborador-documentos.html" class="activo" aria-current="page">Documentos</a>
     </nav>
 
-     <!--Formulario-->
+    <!--Formulario-->
     <!--novalidate: la validación la hace js/app.js, para mostrar los errores junto a cada campo.
     data-mensaje-ok: texto del aviso al guardar-->
     <form id="formulario" class="formulario" novalidate data-mensaje-ok="Guardado correctamente">
     <section class="tarjeta">
-      <h2 class="tarjeta__titulo">Nuevo documento</h2>
+      <h2 class="tarjeta_titulo">Nuevo documento</h2>
       <div class="rejilla rejilla--3">
 
         <!--Campo: Tipo de documento-->
         <div class="campo">
           <label for="tipo">Tipo de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="tipo" name="tipo" required><option value="">Seleccionar…</option><option value="Cédula">Cédula</option><option value="Hoja de vida">Hoja de vida</option><option value="Certificado de estudios">Certificado de estudios</option><option value="Otro">Otro</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Número de documento-->
         <div class="campo">
           <label for="numero">Número de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="numero" name="numero" placeholder="Ej: 12345" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha de emisión-->
         <div class="campo">
           <label for="emision">Fecha de emisión <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="date" id="emision" name="emision" placeholder="" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha de vencimiento-->
         <div class="campo">
           <label for="vencimiento">Fecha de vencimiento</label>
           <input type="date" id="vencimiento" name="vencimiento" placeholder="" data-despues-de="emision">
-          <p class="campo__ayuda">Opcional: solo si el documento vence.</p>
-          <p class="campo__error" hidden></p>
+          <p class="campo_ayuda">Opcional: solo si el documento vence.</p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Observaciones-->
         <div class="campo">
           <label for="observaciones">Observaciones</label>
           <input type="text" id="observaciones" name="observaciones" placeholder="Opcional">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
       </div>
 
       <!--Boton-->
-      <e!-- Guardar = azul, Cancelar = gris (colores fijos por acción) -->
+      <!-- Guardar = azul, Cancelar = gris (colores fijos por acción) -->
       <div class="botones">
         <button type="submit" class="boton boton--guardar">Guardar</button>
         <button type="reset" class="boton boton--secundario">Cancelar</button>
@@ -101,7 +101,7 @@
     (disabled) y js/app.js los activa al seleccionar una fila-->
     <div class="herramientas" data-tabla="tabla-documentos-col">
       <input type="search" class="buscador" placeholder="Buscar…" aria-label="Buscar en la tabla">
-      <span class="herramientas__espacio"></span>
+      <span class="herramientas_espacio"></span>
       <button type="button" class="boton boton--secundario" data-accion="exportar">⬇ Exportar a Excel</button>
       <button type="button" class="boton boton--contorno" data-accion="editar" disabled>✎ Editar</button>
       <button type="button" class="boton boton--eliminar" data-accion="eliminar" disabled>🗑 Eliminar</button>
@@ -133,7 +133,7 @@
     <p class="contador" data-contador="tabla-documentos-col"></p>
   </main>
 
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

@@ -23,8 +23,8 @@
 
     <!--Ficha del vehiculo-->
     <section class="tarjeta ficha">
-      <div class="ficha__nombre">Documentos del vehículo WOZ-214 · N.º 435</div>
-      <span class="herramientas__espacio"></span>
+      <div class="ficha_nombre">Documentos del vehículo WOZ-214 · N.º 435</div>
+      <span class="herramientas_espacio"></span>
       <a class="boton boton--secundario" href="vehiculos.html">← Volver a vehículos</a>
     </section>
 
@@ -33,42 +33,42 @@
     data-mensaje-ok: texto del aviso al guardar-->
     <form id="formulario" class="formulario" novalidate data-mensaje-ok="Guardado correctamente">
     <section class="tarjeta">
-      <h2 class="tarjeta__titulo">Nuevo documento</h2>
+      <h2 class="tarjeta_titulo">Nuevo documento</h2>
       <div class="rejilla rejilla--3">
 
         <!--Campo: Tipo de documento-->
         <div class="campo">
           <label for="tipo">Tipo de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="tipo" name="tipo" required><option value="">Seleccionar…</option><option value="SOAT">SOAT</option><option value="Tecnomecánica">Tecnomecánica</option><option value="Tarjeta de operación">Tarjeta de operación</option><option value="Póliza">Póliza</option><option value="Tarjeta de propiedad">Tarjeta de propiedad</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Número de documento-->
         <div class="campo">
           <label for="numero">Número de documento <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="numero" name="numero" placeholder="Ej: 8891023" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha de emisión-->
         <div class="campo">
           <label for="emision">Fecha de emisión <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="date" id="emision" name="emision" placeholder="" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha de vencimiento-->
         <div class="campo">
           <label for="vencimiento">Fecha de vencimiento <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="date" id="vencimiento" name="vencimiento" placeholder="" data-despues-de="emision" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Observaciones-->
         <div class="campo">
           <label for="observaciones">Observaciones</label>
           <input type="text" id="observaciones" name="observaciones" placeholder="Opcional">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
       </div>
 
@@ -123,7 +123,7 @@
     <p class="contador" data-contador="tabla-doc-vehiculo"></p>
   </main>
 
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

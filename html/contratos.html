@@ -25,14 +25,14 @@
     data-mensaje-ok: texto del aviso al guardar-->
     <form id="formulario" class="formulario" novalidate data-mensaje-ok="Contrato guardado correctamente">
     <section class="tarjeta">
-      <h2 class="tarjeta__titulo">Nuevo contrato</h2>
+      <h2 class="tarjeta_titulo">Nuevo contrato</h2>
       <div class="rejilla rejilla--3">
 
         <!--Campo: Número de contrato-->
         <div class="campo">
           <label for="numero">Número de contrato <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="text" id="numero" name="numero" placeholder="Ej: CT-2026-001" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Cliente-->
@@ -40,42 +40,42 @@
           <label for="cliente">Cliente <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="search" id="cliente" name="cliente" list="lista-cliente" placeholder="Escribe para buscar…" autocomplete="off" required>
           <datalist id="lista-cliente"><option value="Cliente S.A."><option value="Industrias Andes"><option value="Colegio San José"></datalist>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Empresa prestadora-->
         <div class="campo">
           <label for="empresa">Empresa prestadora <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="empresa" name="empresa" required><option value="">Seleccionar…</option><option value="Empresa X">Empresa X</option><option value="Servicios Y">Servicios Y</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha de inicio-->
         <div class="campo">
           <label for="inicio">Fecha de inicio <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="date" id="inicio" name="inicio" placeholder="" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Fecha fin-->
         <div class="campo">
           <label for="fin">Fecha fin <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <input type="date" id="fin" name="fin" placeholder="" data-despues-de="inicio" required>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Estado-->
         <div class="campo">
           <label for="estado">Estado <span class="obligatorio" title="Campo obligatorio">*</span></label>
           <select id="estado" name="estado" required><option value="">Seleccionar…</option><option value="Vigente">Vigente</option><option value="Vencido">Vencido</option></select>
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
 
         <!--Campo: Observaciones-->
         <div class="campo">
           <label for="observaciones">Observaciones</label>
           <input type="text" id="observaciones" name="observaciones" placeholder="Opcional">
-          <p class="campo__error" hidden></p>
+          <p class="campo_error" hidden></p>
         </div>
       </div>
 
@@ -130,7 +130,7 @@
     <p class="contador" data-contador="tabla-contratos"></p>
   </main>
 
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/menu.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>
